@@ -1,4 +1,4 @@
-defmodule Mat do
+defmodule MyMath do
   def sum(0), do: 0
 
   def sum(1), do: 1

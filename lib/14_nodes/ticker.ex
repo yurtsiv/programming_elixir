@@ -1,4 +1,4 @@
-defmodule Ticker do
+defmodule NodeTicker do
   @interval 2000
   @name :ticker
 

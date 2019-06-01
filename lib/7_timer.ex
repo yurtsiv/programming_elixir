@@ -1,4 +1,4 @@
-defmodule Countdown do
+defmodule MyTimer do
   def sleep(seconds) do
     receive do
     after

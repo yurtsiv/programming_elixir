@@ -1,4 +1,4 @@
-defmodule Dictionary do
+defmodule Anagram do
   @name {:global, __MODULE__}
 
   def start_link do

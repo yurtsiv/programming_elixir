@@ -1,7 +1,7 @@
-defmodule Client do
+defmodule NodeClient do
   def start do
     pid = spawn(__MODULE__, :receiver, [])
-    Ticker.register(pid)
+    NodeTicker.register(pid)
   end
 
   def receiver do

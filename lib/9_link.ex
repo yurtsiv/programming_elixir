@@ -1,4 +1,4 @@
-defmodule Link1 do
+defmodule MyLink do
   import :timer, only: [sleep: 1]
 
   def sad_function do
