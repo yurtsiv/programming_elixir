@@ -41,6 +41,5 @@ defmodule MyList do
         order
       end
     end
-
   end
 end

@@ -4,7 +4,7 @@ defmodule CatFinder do
 
     receive do
       {:ask, file_name, sender} ->
-        occurences = find_cat_occurences(file_name) 
+        occurences = find_cat_occurences(file_name)
         send(sender, {:answer, file_name, occurences, self()})
         find_cats(parent)
 
@@ -13,9 +13,8 @@ defmodule CatFinder do
     end
   end
 
-
   def find_cat_occurences(file_name) do
-    File.read!(file_name)    
+    File.read!(file_name)
     |> String.split(" ")
     |> Enum.count(&(&1 === "cat"))
   end

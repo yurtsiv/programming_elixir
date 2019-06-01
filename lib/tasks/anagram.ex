@@ -2,7 +2,7 @@ defmodule Dictionary do
   @name {:global, __MODULE__}
 
   def start_link do
-    Agent.start_link(fn -> Map.new end, name: @name)
+    Agent.start_link(fn -> Map.new() end, name: @name)
   end
 
   def add_words(words) do
@@ -18,11 +18,11 @@ defmodule Dictionary do
   end
 
   def add_one_word(word, map) do
-    Map.update(map, signature_of(word), [word], &[word |&1])
+    Map.update(map, signature_of(word), [word], &[word | &1])
   end
 
   def signature_of(word) do
-    word |> to_char_list |> Enum.sort |> to_string
+    word |> to_char_list |> Enum.sort() |> to_string
   end
 end
 
@@ -36,7 +36,6 @@ defmodule WordListLoader do
   defp load_task(file_name) do
     File.stream!(file_name, [], :line)
     |> Enum.map(&String.strip/1)
-    |> Dictionary.add_words
+    |> Dictionary.add_words()
   end
-
 end

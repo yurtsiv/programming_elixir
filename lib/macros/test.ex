@@ -5,9 +5,8 @@ defmodule Test do
 
   My.local_update("hello")
 
-  IO.puts "Local end: #{local}"
+  IO.puts("Local end: #{local}")
 
   def run do
-    
   end
 end

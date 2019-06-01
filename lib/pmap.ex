@@ -3,7 +3,7 @@ defmodule Parallel do
     me = self()
 
     list
-    |> Enum.map(fn item -> 
+    |> Enum.map(fn item ->
       spawn(fn -> send(me, {self(), func.(item)}) end)
     end)
     |> Enum.map(fn pid ->

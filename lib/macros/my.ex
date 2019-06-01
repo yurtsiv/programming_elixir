@@ -1,17 +1,18 @@
 defmodule My do
   defmacro macro(param) do
-    quote do: IO.puts "hello"
+    quote do: IO.puts("hello")
   end
 
   defmacro local_update(val) do
     local = "SOME VAL"
 
-    result = quote do
-      local = unquote(val)
-      IO.puts "Local in macro: #{local}"
-    end
+    result =
+      quote do
+        local = unquote(val)
+        IO.puts("Local in macro: #{local}")
+      end
 
-    IO.puts "Local in func: #{local}"
+    IO.puts("Local in func: #{local}")
 
     result
   end
@@ -30,14 +31,14 @@ defmodule My do
 
     quote do
       case unquote(condition) do
-        true -> unquote(else_clause) 
+        true -> unquote(else_clause)
         _ -> unquote(do_clause)
       end
     end
   end
 
   defmacro times_n(n) do
-    quote  do
+    quote do
       def unquote(:"times_#{n}")(times) do
         unquote(n) + times
       end

@@ -7,9 +7,8 @@ defmodule Client do
   def receiver do
     receive do
       {:tick} ->
-        IO.puts "Tick received"
+        IO.puts("Tick received")
         receiver()
     end
-    
   end
 end

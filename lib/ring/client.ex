@@ -7,10 +7,11 @@ defmodule RingClient do
     receive do
       {:register_next, next} ->
         listen(next)
+
       {:receive} when next_client !== nil ->
-        IO.puts("#{inspect self()}: Tock")
+        IO.puts("#{inspect(self())}: Tock")
         :timer.sleep(2000)
-        IO.puts("#{inspect self()}: Tick")
+        IO.puts("#{inspect(self())}: Tick")
         send(next_client, {:receive})
         listen(next_client)
     end

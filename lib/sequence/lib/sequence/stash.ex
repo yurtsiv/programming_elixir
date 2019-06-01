@@ -12,7 +12,7 @@ defmodule Sequence.Stash do
   def save_value(pid, value) do
     GenServer.cast(pid, {:save_value, value})
   end
-  
+
   def handle_call(:get_value, _from, current_value) do
     {:reply, current_value, current_value}
   end

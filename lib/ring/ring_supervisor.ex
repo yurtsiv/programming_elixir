@@ -2,7 +2,7 @@ defmodule RingSupervisor do
   @name :ring
 
   def start do
-    pid = spawn(__MODULE__, :main_loop, [nil, nil]) 
+    pid = spawn(__MODULE__, :main_loop, [nil, nil])
     :global.register_name(@name, pid)
   end
 
@@ -24,6 +24,5 @@ defmodule RingSupervisor do
           main_loop(client, last_node)
         end
     end
-    
   end
 end

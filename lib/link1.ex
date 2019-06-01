@@ -9,13 +9,13 @@ defmodule Link1 do
 
   def run do
     res = spawn_monitor(Link1, :sad_function, [])
-    IO.inspect res
+    IO.inspect(res)
 
     receive do
       msg ->
-        IO.puts "MESSAGE RECEIVED: #{inspect(msg)}"
-
-      after 1000 ->
+        IO.puts("MESSAGE RECEIVED: #{inspect(msg)}")
+    after
+      1000 ->
         IO.puts("Nothing happened")
     end
   end

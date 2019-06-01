@@ -8,28 +8,30 @@ defmodule Ticker do
   end
 
   def register(client_pid) do
-    send :global.whereis_name(@name), { :register, client_pid }
+    send(:global.whereis_name(@name), {:register, client_pid})
   end
 
   def generator(clients, queue) do
     receive do
       {:register, pid} ->
-        IO.puts "registering #{inspect pid}"
+        IO.puts("registering #{inspect(pid)}")
         generator([pid | clients], [pid | queue])
-      after @interval ->
-        IO.puts "Server: tick"
+    after
+      @interval ->
+        IO.puts("Server: tick")
 
         case {clients, queue} do
           {[], []} ->
             generator([], [])
-          {_, []}  ->
+
+          {_, []} ->
             send(hd(clients), {:tick})
             generator(clients, tl(clients))
+
           {_, _} ->
             send(hd(queue), {:tick})
             generator(clients, tl(queue))
         end
     end
-    
   end
 end
