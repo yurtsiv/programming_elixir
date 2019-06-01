@@ -1,4 +1,4 @@
-defmodule My do
+defmodule MyMacros do
   defmacro macro(param) do
     quote do: IO.puts("hello")
   end
